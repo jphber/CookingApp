@@ -12,8 +12,13 @@ import com.jeanbernuy.cookingapp.databinding.RecipeRowBinding
 
 class RecipeAdapter(
     private val context: Context,
-    private val listaRecipes: List<RecipeQuery.Item?>
+    private val listaRecipes: List<RecipeQuery.Item?>,
+    private val itemClickListener: OnClickRecipeListener
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
+
+    interface OnClickRecipeListener {
+        fun onClickRecipe(item: RecipeQuery.Item?, position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = RecipeRowBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -36,6 +41,9 @@ class RecipeAdapter(
             Glide.with(context).load(item?.photo()?.url()).centerCrop()
                 .placeholder(R.drawable.ic_launcher_background).into(binding.imvRecipe)
             binding.txtTitle.text = item?.title()
+            binding.root.setOnClickListener {
+                itemClickListener.onClickRecipe(item, position)
+                }
         }
 
     }

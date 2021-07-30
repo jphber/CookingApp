@@ -12,13 +12,14 @@ import com.jeanbernuy.cookingapp.data.DataSource
 class ListRecipeViewModel : ViewModel() {
 
     private val dataRepository = DataSource()
-    var listRecipes = MutableLiveData<Resource.Success<RecipeQuery.Data>?>()
+    var listRecipes = MutableLiveData<Resource<RecipeQuery.Data>?>()
 
     init {
         fetchRecipes()
     }
 
     fun fetchRecipes() {
+
         dataRepository.getRecipeCollection {
             val handler = Handler(Looper.getMainLooper())
             handler.post {

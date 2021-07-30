@@ -10,11 +10,11 @@ import com.jeanbernuy.cookingapp.RecipeQuery
 
 class DataSource {
 
-    fun getRecipeCollection(completion: (result: Resource.Success<RecipeQuery.Data>) -> Unit) {
+    fun getRecipeCollection(completion: (result: Resource<RecipeQuery.Data>) -> Unit) {
         ClientContentful.clientContentfulGraphQL.query(RecipeQuery())
             .enqueue(object : ApolloCall.Callback<RecipeQuery.Data>() {
                 override fun onFailure(e: ApolloException) {
-
+                    completion(Resource.Failure(e))
                 }
 
                 override fun onResponse(response: Response<RecipeQuery.Data>) {
