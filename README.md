@@ -1,6 +1,6 @@
 # CookingApp
 
-This is a app example built with GraphQL:
+This is a app built with GraphQL:
 
 ## Libraries Used:
 
