@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.jeanbernuy.cookingapp.ui.MainFragment"
+        android:name="com.jeanbernuy.cookingapp.ui.ListRecipeFragment"
         android:label="List Recipes"
         tools:layout="@layout/fragment_main">
         <action
