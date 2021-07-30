@@ -1,0 +1,19 @@
+query Recipe{
+    recipeCollection{
+        items{
+            title
+            description
+            photo {
+                url
+            }
+            chef{
+                name
+            }
+            tagsCollection {
+                items {
+                    name
+                }
+            }
+        }
+    }
+}

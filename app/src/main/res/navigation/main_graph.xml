@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.jeanbernuy.cookingapp.ui.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="List Recipes"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detailRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/detailRecipeFragment"
         android:name="com.jeanbernuy.cookingapp.ui.DetailRecipeFragment"
-        android:label="fragment_detail_recipe"
+        android:label="Detail Recipe"
         tools:layout="@layout/fragment_detail_recipe" />
 </navigation>
