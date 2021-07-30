@@ -1,12 +1,12 @@
 # CookingApp
 
-This is a app example built with:
+This is a app built with GraphQL:
 
 ## Libraries Used:
 
-- Coroutines
 - MVVM
 - Extension Functions
 - Retrofit
 - Navigation Components
 - ViewBinding
+- Apollo GraphQL
