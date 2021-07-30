@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.jeanbernuy.cookingapp.R
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.jeanbernuy.cookingapp.core.Resource
+import com.jeanbernuy.cookingapp.databinding.FragmentMainBinding
+import com.jeanbernuy.cookingapp.ui.adapters.RecipeAdapter
 import com.jeanbernuy.cookingapp.ui.viewmodel.ListRecipeViewModel
 
 /**
@@ -19,24 +22,41 @@ import com.jeanbernuy.cookingapp.ui.viewmodel.ListRecipeViewModel
  */
 class ListRecipeFragment : Fragment() {
 
-    private val viewModel:ListRecipeViewModel by viewModels()
+    private val viewModel: ListRecipeViewModel by viewModels()
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
     }
-    
+
     private fun setupViews() {
-        viewModel.listRecipes.observe(viewLifecycleOwner, Observer{
-            Log.d("Response",it.toString())
+
+        binding.rvRecipes.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvRecipes.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
+        viewModel.listRecipes.observe(viewLifecycleOwner, Observer {result ->
+            when (result){
+                is Resource.Success -> {
+                    binding.rvRecipes.adapter = RecipeAdapter(requireContext(), result.data.recipeCollection()!!.items())
+                }
+            }
         })
     }
-    
+
 }
