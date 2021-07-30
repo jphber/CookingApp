@@ -5,8 +5,8 @@ This is a app built with GraphQL:
 ## Libraries Used:
 
 - MVVM
+- LiveData
 - Extension Functions
-- Retrofit
 - Navigation Components
 - ViewBinding
 - Apollo GraphQL
