@@ -17,6 +17,10 @@
     <fragment
         android:id="@+id/detailRecipeFragment"
         android:name="com.jeanbernuy.cookingapp.ui.DetailRecipeFragment"
-        android:label="Detail Recipe"
-        tools:layout="@layout/fragment_detail_recipe" />
+        android:label="Recipe Detail"
+        tools:layout="@layout/fragment_detail_recipe">
+        <argument
+            android:name="detailRecipe"
+            app:argType="com.jeanbernuy.cookingapp.data.model.RecipeItem" />
+    </fragment>
 </navigation>

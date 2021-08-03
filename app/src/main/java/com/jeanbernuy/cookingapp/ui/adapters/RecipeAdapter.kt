@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jeanbernuy.cookingapp.R
-import com.jeanbernuy.cookingapp.RecipeQuery
 import com.jeanbernuy.cookingapp.core.BaseViewHolder
+import com.jeanbernuy.cookingapp.data.model.RecipeItem
 import com.jeanbernuy.cookingapp.databinding.RecipeRowBinding
 
 class RecipeAdapter(
     private val context: Context,
-    private val listaRecipes: List<RecipeQuery.Item?>,
+    private val listaRecipes: List<RecipeItem>,
     private val itemClickListener: OnClickRecipeListener
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     interface OnClickRecipeListener {
-        fun onClickRecipe(item: RecipeQuery.Item?, position: Int)
+        fun onClickRecipe(item: RecipeItem, position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
@@ -36,14 +36,14 @@ class RecipeAdapter(
     }
 
     inner class MainViewHolder(val binding: RecipeRowBinding) :
-        BaseViewHolder<RecipeQuery.Item?>(binding.root) {
-        override fun bind(item: RecipeQuery.Item?, position: Int) {
-            Glide.with(context).load(item?.photo()?.url()).centerCrop()
+        BaseViewHolder<RecipeItem>(binding.root) {
+        override fun bind(item: RecipeItem, position: Int) {
+            Glide.with(context).load(item.photo?.url).centerCrop()
                 .placeholder(R.drawable.ic_launcher_background).into(binding.imvRecipe)
-            binding.txtTitle.text = item?.title()
+            binding.txtTitle.text = item?.title
             binding.root.setOnClickListener {
                 itemClickListener.onClickRecipe(item, position)
-                }
+            }
         }
 
     }

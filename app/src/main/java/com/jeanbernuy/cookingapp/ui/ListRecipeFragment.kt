@@ -11,9 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jeanbernuy.cookingapp.R
-import com.jeanbernuy.cookingapp.RecipeQuery
 import com.jeanbernuy.cookingapp.core.Resource
+import com.jeanbernuy.cookingapp.data.model.RecipeItem
 import com.jeanbernuy.cookingapp.databinding.FragmentMainBinding
 import com.jeanbernuy.cookingapp.ui.adapters.RecipeAdapter
 import com.jeanbernuy.cookingapp.ui.viewmodel.ListRecipeViewModel
@@ -59,7 +58,11 @@ class ListRecipeFragment : Fragment(), RecipeAdapter.OnClickRecipeListener {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.rvRecipes.adapter =
-                        RecipeAdapter(requireContext(), result.data.recipeCollection()!!.items(),this)
+                        RecipeAdapter(
+                            requireContext(),
+                            result.data.recipes,
+                            this
+                        )
                 }
                 is Resource.Failure -> {
                     Toast.makeText(
@@ -72,8 +75,10 @@ class ListRecipeFragment : Fragment(), RecipeAdapter.OnClickRecipeListener {
         })
     }
 
-    override fun onClickRecipe(item: RecipeQuery.Item?, position: Int) {
-        findNavController().navigate(R.id.detailRecipeFragment)
+    override fun onClickRecipe(item: RecipeItem, position: Int) {
+        findNavController().navigate(
+            ListRecipeFragmentDirections.actionMainFragmentToDetailRecipeFragment(item)
+        )
     }
 
 }
