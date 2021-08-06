@@ -1,6 +1,6 @@
 # CookingApp
 
-This is a app built with Kotlin using GraphQL and Contenful API:
+This is a app built with Kotlin using GraphQL and Contentful API:
 
 ## Libraries Used:
 
@@ -12,3 +12,8 @@ This is a app built with Kotlin using GraphQL and Contenful API:
 - Scope Functions
 - ViewBinding
 - Apollo GraphQL
+
+
+##App
+
+![Welcome CookingApp](screenshots/picture_1.png?raw=true)
