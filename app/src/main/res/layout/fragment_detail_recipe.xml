@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="15dp">
 
         <ImageView
             android:id="@+id/ivRecipePhoto"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="200dp"
             tools:src ="@drawable/ic_launcher_background"
             />
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvRecipeName"
             android:text="@string/hello_blank_fragment"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             tools:text="Lomo Saltado"/>
@@ -40,16 +40,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvRecipeTags"
-                android:text="@string/hello_blank_fragment"
-                android:textSize="14sp"
-                android:layout_marginTop="20dp"
-                tools:text="Tags:"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecipeTags"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                android:scrollIndicators="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

@@ -1,14 +1,15 @@
 package com.jeanbernuy.cookingapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.jeanbernuy.cookingapp.data.model.RecipeItem
 import com.jeanbernuy.cookingapp.databinding.FragmentDetailRecipeBinding
+import com.jeanbernuy.cookingapp.ui.adapters.TagAdapter
 
 /**
  * A simple [Fragment] that shows Detail of Recipe.
@@ -26,7 +27,6 @@ class DetailRecipeFragment : Fragment() {
         requireArguments().let {
             DetailRecipeFragmentArgs.fromBundle(it).also { args ->
                 detailRecipeItem = args.detailRecipe
-                Log.d("DATA", detailRecipeItem.toString())
 
             }
         }
@@ -43,14 +43,22 @@ class DetailRecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViews()
         setupRecipeDetail()
     }
 
+    private fun setupViews() {
+        binding.rvRecipeTags.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
     private fun setupRecipeDetail() {
-        Glide.with(requireContext()).load(detailRecipeItem.photo?.url).centerCrop().into(binding.ivRecipePhoto)
+        Glide.with(requireContext()).load(detailRecipeItem.photo?.url).centerCrop()
+            .into(binding.ivRecipePhoto)
         binding.tvRecipeName.text = detailRecipeItem.title
         binding.tvRecipeDescription.text = detailRecipeItem.description
-        //binding.tvRecipeTags.text = detailRecipeItem?.tagsCollection?.items?.get(0)?.name
+        binding.rvRecipeTags.adapter =
+            TagAdapter(requireContext(), detailRecipeItem.tagsCollection.items)
         binding.tvRecipeChefName.text = detailRecipeItem.chef.name
     }
 }
