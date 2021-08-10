@@ -19,4 +19,4 @@ This is a app built with Kotlin using GraphQL and Contentful API:
 
 ![Welcome CookingApp](screenshots/list_recipes.png)
 
-![Welcome CookingApp](screenshots/detail_recipe.png)
+![Welcome CookingApp](screenshots/detail_recipes.png)
