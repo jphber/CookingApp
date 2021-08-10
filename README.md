@@ -14,7 +14,8 @@ This is a app built with Kotlin using GraphQL and Contentful API:
 - Apollo GraphQL
 
 
-##App
+## App
+
 
 ![Welcome CookingApp](screenshots/list_recipes.png)
 
