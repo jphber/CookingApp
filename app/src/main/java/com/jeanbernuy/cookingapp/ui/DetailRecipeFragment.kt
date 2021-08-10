@@ -59,6 +59,6 @@ class DetailRecipeFragment : Fragment() {
         binding.tvRecipeDescription.text = detailRecipeItem.description
         binding.rvRecipeTags.adapter =
             TagAdapter(requireContext(), detailRecipeItem.tagsCollection.items)
-        binding.tvRecipeChefName.text = detailRecipeItem.chef.name
+        binding.tvRecipeChefName.text = if (!detailRecipeItem.chef.name.isNullOrEmpty()) detailRecipeItem.chef.name else "Not available"
     }
 }

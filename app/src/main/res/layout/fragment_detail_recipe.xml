@@ -1,86 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.DetailRecipeFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/ivRecipePhoto"
+        android:layout_width="411dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvRecipeName"
+        android:layout_width="383dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="15dp">
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivRecipePhoto"
+        tools:text="Lomo Saltado" />
 
-        <ImageView
-            android:id="@+id/ivRecipePhoto"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            tools:src ="@drawable/ic_launcher_background"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvRecipeName"
-            android:text="@string/hello_blank_fragment"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            tools:text="Lomo Saltado"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvRecipeDescription"
-            android:text="@string/hello_blank_fragment"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            tools:text="Lorem"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRecipeTags"
-                android:orientation="horizontal"
-                android:scrollbars="none"
-                android:scrollIndicators="none"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chef:"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginTop="20dp"
-                tools:text="Chef:"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvRecipeChefName"
-                android:text="@string/hello_blank_fragment"
-                android:textSize="14sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                tools:text="Julio Valdez"/>
-        </LinearLayout>
+    <TextView
+        android:id="@+id/tvRecipeDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/rvRecipeTags"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecipeName"
+        tools:text="Lorem" />
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecipeTags"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:scrollIndicators="none"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitleChef"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecipeDescription" />
 
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTitleChef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_chef"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvRecipeChefName"
+        app:layout_constraintHorizontal_bias="0.00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvRecipeTags"
+        tools:text="Chef:" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvRecipeChefName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleChef"
+        app:layout_constraintTop_toBottomOf="@+id/rvRecipeTags"
+        tools:text="Julio Valdez" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
