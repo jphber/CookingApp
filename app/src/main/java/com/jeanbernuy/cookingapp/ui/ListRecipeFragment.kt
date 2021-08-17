@@ -40,6 +40,7 @@ class ListRecipeFragment : Fragment(), RecipeAdapter.OnClickRecipeListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        updateUI()
     }
 
     private fun setupViews() {
@@ -52,11 +53,19 @@ class ListRecipeFragment : Fragment(), RecipeAdapter.OnClickRecipeListener {
             )
         )
 
+        binding.swipeRefreshRecipes.setOnRefreshListener {
+            updateUI()
+        }
+    }
+
+    private fun updateUI() {
+        binding.swipeRefreshRecipes.isRefreshing = true
         viewModel.listRecipes.observe(viewLifecycleOwner, Observer { result ->
             binding.progressBar.visibility = View.VISIBLE
             when (result) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.swipeRefreshRecipes.isRefreshing = false
                     binding.rvRecipes.adapter =
                         RecipeAdapter(
                             requireContext(),

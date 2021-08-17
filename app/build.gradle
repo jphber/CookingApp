@@ -78,4 +78,7 @@ dependencies {
     //Apollo GraphQL
     implementation 'com.apollographql.apollo:apollo-runtime:2.5.9'
 
+    //SwipeRefreshLayout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
 }

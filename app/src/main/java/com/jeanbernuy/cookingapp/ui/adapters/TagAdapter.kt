@@ -26,12 +26,7 @@ class TagAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        if (listTags != null) {
-            return listTags.size
-        }
-        return 0
-    }
+    override fun getItemCount() = listTags?.size ?: 0
 
     inner class TagViewHolder(private val binding: TagRowBinding) :
         BaseViewHolder<Item?>(binding.root) {
